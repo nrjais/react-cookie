@@ -54,7 +54,7 @@ export default function App() {
               variant="ghost"
               size="icon"
               onClick={() => {
-                navigator.clipboard.writeText("session_id=abc123; user_id=456");
+                if (cookie) navigator.clipboard.writeText(cookie);
               }}
             >
               <CopyIcon className="h-5 w-5" />
