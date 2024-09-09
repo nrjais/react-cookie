@@ -11,8 +11,19 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 
 const extractCookieFromCurl = (curlCommand: string) => {
-  const cookieHeader = curlCommand.match(/-H 'Cookie: ([^']+)'/);
-  return cookieHeader ? cookieHeader[1] : null;
+  let cookieHeader = curlCommand.match(/-H 'Cookie: ([^']+)'/);
+  if (cookieHeader) return cookieHeader[1];
+
+  cookieHeader = curlCommand.match(/-H "Cookie: ([^"]+)"/);
+  if (cookieHeader) return cookieHeader[1];
+
+  cookieHeader = curlCommand.match(/-H 'cookie: ([^']+)'/);
+  if (cookieHeader) return cookieHeader[1];
+
+  cookieHeader = curlCommand.match(/-H "cookie: ([^"]+)"/);
+  if (cookieHeader) return cookieHeader[1];
+
+  return null;
 };
 
 export default function App() {
