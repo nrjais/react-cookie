@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <div className="w-full h-full">
-      <Card className="w-96 m-auto">
+      <Card className="w- m-auto">
         <CardHeader>
           <CardTitle>cURL to Cookie</CardTitle>
           <CardDescription>
